@@ -14,13 +14,14 @@ public class MyTest {
     }
 
     @Test
-    public void ok() throws InterruptedException {
+    public void ok() {
         LoginPage login = new LoginPage();
         MainPage main = new MainPage();
         MessagePage message = new MessagePage();
         login.open().Authorization(OKValues.LOGIN,OKValues.PASSWORD);
         main.openMessages();
         message.find("Спутник").printMessage("Привет");
+        //Почему-то не работает, если есть непрочитанное сообщение от спутника. Поэтому сначала надо прочитать, а потом запускать тест.
         closeWebDriver();
     }
 }
